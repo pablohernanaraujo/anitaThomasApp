@@ -6,12 +6,84 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Anita Thomas App</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div>
-    <div>
-      <img src="/images/thomasph_fashion1.jpg" alt="">
+  <div class="grid" data-masonry='{ "columnWidth": 350, "itemSelector": ".grid-item" }'>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion1.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion2.jpg"></sc-img> 
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion3.jpg"></sc-img> 
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion4.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion5.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion10.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion11.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion12.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion13.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion14.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion15.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion16.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion17.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion18.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion19.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion20.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion21.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion22.jpg"></sc-img>
+    </div>
+    <div class="grid-item">
+      <sc-img src="/images/thomasph_fashion23.jpg"></sc-img>
     </div>
   </div>
+
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="sc-img.js"></script>
+  <script src="masonry.js"></script>
+  <script>
+    $(document).ready(() => {
+      $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: 350,
+        isFitWidth: true
+      });
+    });
+  </script>
 </body>
 </html>
