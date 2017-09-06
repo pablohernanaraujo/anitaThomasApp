@@ -5,6 +5,10 @@ body {
   margin: 0 auto;
 }
 
+h1 {
+  color: crimson;
+}
+
 img {
   display: block;
   width: 100%;
