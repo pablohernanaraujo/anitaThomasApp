@@ -40,6 +40,7 @@ class SCImg extends HTMLElement {
   }
 
   connectedCallback() {
+    io.POLL_INTERVAL = 100;
     io.observe(this);
   }
 
