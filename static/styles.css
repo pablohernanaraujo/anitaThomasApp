@@ -14,6 +14,10 @@ header {
   align-items: center;
   padding: 0px 23px;
   box-sizing: border-box;
+  background-color: rgba(255,255,255,0.9);
+  position: fixed;
+  top: 0;
+  z-index: 100;
 }
 
 .contenedor-botones {
@@ -69,6 +73,9 @@ header {
   justify-content: center;
   align-items: center;
   background-color: #f7f7f7;
+  position: fixed;
+  z-index: 100;
+  top: 56px;
 }
 
 .mobile-header-boton {
@@ -93,8 +100,7 @@ img {
 }
 
 .grid {
-  /* center */
-  margin: 0 auto;
+  margin: 56px auto 0;
 }
 
 /* clearfix */
@@ -116,5 +122,8 @@ img {
   }
   .menu-mobile {
     display: flex;
+  }
+  .grid {
+    margin: 112px auto 0;
   }
 }
