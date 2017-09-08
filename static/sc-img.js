@@ -5,7 +5,7 @@ template.innerHTML =`
       display: block;
       position: relative;
       background-size: 100% 100%;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
     }
     img {
       width: 100%;

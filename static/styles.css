@@ -5,8 +5,86 @@ body {
   margin: 0 auto;
 }
 
-h1 {
-  color: crimson;
+header {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 23px;
+  box-sizing: border-box;
+}
+
+.contenedor-botones {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-boton {
+  text-decoration: none;
+  font-size: 12px;
+  color: #000;
+  margin-right: 10px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  height: 16px;
+}
+
+.header-boton-active {
+  background-color: #e8fd00;
+}
+
+.logo {
+  width: 150px;
+  height: 10px;
+  position: relative;
+  display: block;
+}
+
+.contenedor-socials {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+}
+
+.social-boton {
+  width: 8px;
+  position: relative;
+  display: block;
+}
+
+.social-boton-instagram {
+  width: 14px;
+  position: relative;
+  display: block;
+  margin-left: 18px;
+}
+
+.menu-mobile {
+  width: 100%;
+  height: 56px;
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7;
+}
+
+.mobile-header-boton {
+  text-decoration: none;
+  font-size: 12px;
+  color: #000;
+  padding: 0 5px;
+  box-sizing: border-box;
+  height: 16px;
+}
+
+.separador {
+  width: 2px;
+  height: 35px;
+  background-color: #dedede;
+  margin: 0 50px;
 }
 
 img {
@@ -15,7 +93,6 @@ img {
 }
 
 .grid {
-  background: #EEE;
   /* center */
   margin: 0 auto;
 }
@@ -30,4 +107,14 @@ img {
 .grid-item {
   width: 330px;
   float: left;
+  padding: 10px 10px 0;
+}
+
+@media screen and (max-width: 800px) {
+  .header-boton {
+    display: none;
+  }
+  .menu-mobile {
+    display: flex;
+  }
 }

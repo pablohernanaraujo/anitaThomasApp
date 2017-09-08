@@ -9,10 +9,35 @@
   <link rel="stylesheet" href="styles.css">
 
   <script src="intersection-observer.js"></script>
+  <!-- <script src="webcomponents-lite.js"></script>
   <script src="custom-elements.min.js"></script>
+  <script src="shadydom.min.js"></script>
+  <script src="scoping-sim.min.js"></script>
+  <script src="custom-style-interface.min.js"></script> -->
 </head>
 <body>
-  <h1>Anita Thomas</h1>
+  <header>
+    <a href="/" class="logo">
+      <img src="/images/logos/anita-thomas-black.png" alt="anita thomas logo negro">
+    </a>
+    <div class="contenedor-botones">
+      <a class="header-boton header-boton-active">FASHION</a>
+      <a href="/teens" class="header-boton">TEENS</a>
+      <div class="contenedor-socials">
+        <a href="https://www.facebook.com/AnitaThomasPH/" class="social-boton">
+          <img src="/images/logos/facebook-black.svg" alt="">
+        </a>
+        <a href="https://www.instagram.com/anitathomasph/?hl=es" class="social-boton-instagram">
+          <img src="/images/logos/instagram-black.svg" alt="">
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="menu-mobile">
+    <a class="mobile-header-boton header-boton-active">FASHION</a>
+    <div class="separador"></div>
+    <a href="/teens" class="mobile-header-boton">TEENS</a>
+  </div>
   <div class="grid" data-masonry='{ "columnWidth": 350, "itemSelector": ".grid-item" }'>
     <div class="grid-item">
       <sc-img src="/images/thomasph_fashion1.jpg"></sc-img>
@@ -73,20 +98,22 @@
     </div>
   </div>
 
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
   <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
   <script src="sc-img.js"></script>
   <script src="masonry.js"></script>
   <script>
-    $(document).ready(() => {
-      $('.grid').masonry({
-        itemSelector: '.grid-item',
-        columnWidth: 350,
-        isFitWidth: true
-      });
+    var elem = document.querySelector('.grid');
+    var msnry = new Masonry( elem, {
+      // options
+      itemSelector: '.grid-item',
+      columnWidth: 350,
+      isFitWidth: true
+    });
+
+    // element argument can be a selector string
+    //   for an individual element
+    var msnry = new Masonry( '.grid', {
+      // options
     });
   </script>
 </body>
