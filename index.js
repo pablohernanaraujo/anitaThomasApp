@@ -7,55 +7,68 @@ const readFile = promisify(fs.readFile);
 const im = require('gm').subClass({imageMagick: true});
 const thumbSize = 16;
 
-app.get('/', async (req, res) => {
+
+const verPage = async function (req, res, end, html) {
   let filepath = req.url;
   if(filepath.endsWith('/'))
-    filepath += 'index.html';
-  const buffer = await readFile('./static/'+filepath);
-  const content = buffer.toString();
-  const newContent = await Promise.all(
+    filepath += html;
+  if(filepath.endsWith('fashion'))
+    filepath = html;
+  let buffer = await readFile('./static/'+filepath);
+  console.log(filepath);
+  let content = buffer.toString();
+  let newContent = await Promise.all(
     content
       .split(/(<sc-img[^>]+><\/sc-img>)/)
       .map(async item => {
         if(!item.startsWith('<sc-img'))
           return item;
-        const src = /src="([^"]+)"/.exec(item)[1];
-        const img = im('./static' + src);
-        const sizeFunc = promisify(img.size.bind(img));
-        const {width, height} = await sizeFunc();
-        const thumbFunc = promisify(img.resize(thumbSize, thumbSize).toBuffer.bind(img));
-        const thumb = await thumbFunc('PNG');
-        const thumbURL = `data:image/png;base64,${thumb.toString('base64')}`;
+        let src = /src="([^"]+)"/.exec(item)[1];
+        let img = im('./static' + src);
+        let sizeFunc = promisify(img.size.bind(img));
+        let {width, height} = await sizeFunc();
+        let thumbFunc = promisify(img.resize(thumbSize, thumbSize).toBuffer.bind(img));
+        let thumb = await thumbFunc('PNG');
+        let thumbURL = `data:image/png;base64,${thumb.toString('base64')}`;
         return item.replace('></sc-img>', `style="padding-top: ${height/width*100}%; background-image: url(${thumbURL});"></sc-img>`);
       })
     );
   res.send(newContent.join(''));
+}
+app.get('/', (req, res) => {
+  verPage(req,res, '/', 'index.html')
 });
 
-app.get('/', async (req, res) => {
-  let filepath = req.url;
-  if(filepath.endsWith('fashion/'))
-    filepath += 'fashion.html';
-  const buffer = await readFile('./static'+filepath);
-  const content = buffer.toString();
-  const newContent = await Promise.all(
-    content
-      .split(/(<sc-img[^>]+><\/sc-img>)/)
-      .map(async item => {
-        if(!item.startsWith('<sc-img'))
-          return item;
-        const src = /src="([^"]+)"/.exec(item)[1];
-        const img = im('./static' + src);
-        const sizeFunc = promisify(img.size.bind(img));
-        const {width, height} = await sizeFunc();
-        const thumbFunc = promisify(img.resize(thumbSize, thumbSize).toBuffer.bind(img));
-        const thumb = await thumbFunc('PNG');
-        const thumbURL = `data:image/png;base64,${thumb.toString('base64')}`;
-        return item.replace('></sc-img>', `style="padding-top: ${height/width*100}%; background-image: url(${thumbURL});"></sc-img>`);
-      })
-    );
-  res.send(newContent.join(''));
+app.get('/fashion', (req, res) => {
+  verPage(req,res, '/fashion', 'fashion.html')
 });
+// app.get('/', function(req, res) {
+//   res.send('im the home page');
+// });
+// app.get('/', async (req, res) => {
+//   let filepath = req.url;
+//   if(filepath.endsWith('/fashion'))
+//     filepath += 'fashion.html';
+//   let buffer = await readFile('./static'+filepath);
+//   let content = buffer.toString();
+//   let newContent = await Promise.all(
+//     content
+//       .split(/(<sc-img[^>]+><\/sc-img>)/)
+//       .map(async item => {
+//         if(!item.startsWith('<sc-img'))
+//           return item;
+//         let src = /src="([^"]+)"/.exec(item)[1];
+//         let img = im('./static' + src);
+//         let sizeFunc = promisify(img.size.bind(img));
+//         let {width, height} = await sizeFunc();
+//         let thumbFunc = promisify(img.resize(thumbSize, thumbSize).toBuffer.bind(img));
+//         let thumb = await thumbFunc('PNG');
+//         let thumbURL = `data:image/png;base64,${thumb.toString('base64')}`;
+//         return item.replace('></sc-img>', `style="padding-top: ${height/width*100}%; background-image: url(${thumbURL});"></sc-img>`);
+//       })
+//     );
+//   res.send(newContent.join(''));
+// });
 
 app.get('/about', function(req, res) {
   res.send('im the about page');
