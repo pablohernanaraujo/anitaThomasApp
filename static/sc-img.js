@@ -13,7 +13,7 @@ template.innerHTML =`
       top: 0;
       left: 0;
       animation: fade-in;
-      animation-duration: 5s;
+      animation-duration: 3s;
     }
     @keyframes fade-in {
       from {opacity: 0}
