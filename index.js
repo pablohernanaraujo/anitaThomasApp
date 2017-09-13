@@ -14,8 +14,9 @@ const verPage = async function (req, res, end, html) {
     filepath += html;
   if(filepath.endsWith('fashion'))
     filepath = html;
+  if(filepath.endsWith('teens'))
+    filepath = html;
   let buffer = await readFile('./static/'+filepath);
-  console.log(filepath);
   let content = buffer.toString();
   let newContent = await Promise.all(
     content
@@ -41,6 +42,10 @@ app.get('/', (req, res) => {
 
 app.get('/fashion', (req, res) => {
   verPage(req,res, '/fashion', 'fashion.html')
+});
+
+app.get('/teens', (req, res) => {
+  verPage(req,res, '/teens', 'teens.html')
 });
 // app.get('/', function(req, res) {
 //   res.send('im the home page');
